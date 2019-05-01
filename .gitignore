@@ -2,3 +2,5 @@
 # *.json
 .env
 *.pyc
+data/
+.vscode/
