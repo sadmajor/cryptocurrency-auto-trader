@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: node_modules/pm2/bin/pm2 start process.yaml --no-daemon --log-date-format 'DD-MM HH:mm:ss.SSS'

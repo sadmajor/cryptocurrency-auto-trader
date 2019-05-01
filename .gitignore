@@ -1,0 +1,4 @@
+# dictionary files
+# *.json
+.env
+*.pyc

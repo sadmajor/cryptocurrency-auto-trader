@@ -1,0 +1,21 @@
+apps:
+    - script: bitcoin/scripts/bitcoin_spider.py
+      interpreter: .env/bin/python
+      watch : false
+      restart_delay : 60000
+    - script: bitcoin/scripts/usd_spider.py
+      interpreter: .env/bin/python
+      watch : false
+      restart_delay : 60000
+    - script: bitcoin/scripts/trader.py
+      interpreter: .env/bin/python
+      watch : false
+      restart_delay : 3600000
+    - script: ./run-services.sh
+      interpreter: /bin/sh
+      watch : false
+      autorestart: false
+    - script: ./run-server.sh
+      interpreter: /bin/sh
+      watch : false
+      autorestart: false

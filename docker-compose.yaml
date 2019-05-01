@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  cryptocurrency-auto-trader:
+    image: gt-alpine
+    build: .
+    volumes:
+      - cryptocurrency-auto-trader-data:/usr/src/cryptocurrency-auto-trader/data
+    ports:
+      - '80:80'
+
+
+volumes:
+  cryptocurrency-auto-trader-data:
