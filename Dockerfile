@@ -28,7 +28,5 @@ COPY manage.py .
 RUN mkdir bitcoin && mkdir cryptocurrency-auto-trader && mkdir data
 COPY bitcoin bitcoin
 COPY cryptocurrency-auto-trader cryptocurrency-auto-trader
-COPY data data
 
-# ENTRYPOINT [".env/bin/python", "manage.py", "runserver", "0.0.0.0:80"]
 CMD ["node_modules/pm2/bin/pm2", "start", "process.yaml", "--no-daemon", "--log-date-format", "DD-MM HH:mm:ss.SSS"]

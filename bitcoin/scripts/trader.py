@@ -30,8 +30,8 @@ def growth(histories):
 
 
 def trader():
-    usd_price = bitcoin_spider().amount
-    bitcoin_price = usd_spider().amount
+    bitcoin_price = bitcoin_spider().amount
+    usd_price = usd_spider().amount
     user = get_user()
 
     last_hour_date_time = now() - timedelta(hours = 1)
@@ -39,7 +39,7 @@ def trader():
     usd_last_hour_history = History.objects.filter(currency='usd', \
         created_at__gte=last_hour_date_time).order_by('created_at').values_list('amount', flat=True)
 
-    bitcoin_last_hour_history = History.objects.filter(currency='usd', \
+    bitcoin_last_hour_history = History.objects.filter(currency='bitcoin', \
         created_at__gte=last_hour_date_time).order_by('created_at').values_list('amount', flat=True)
 
     bit_growth_avrage = growth(bitcoin_last_hour_history)
@@ -54,7 +54,8 @@ def trader():
         user.bitcoint_ammount = 0
         user.save()
     else:
-        Action.objects.create(action_type='buy', bitcoin_transaction_amount = user.toman_amount / (bitcoin_price * usd_price), usd_price = usd_price, bitcoin_price = bitcoin_price)
+        Action.objects.create(action_type='buy', \
+            bitcoin_transaction_amount = user.toman_amount / (bitcoin_price * usd_price), usd_price = usd_price, bitcoin_price = bitcoin_price)
         
         user.bitcoint_ammount = user.bitcoint_ammount + user.toman_amount /(bitcoin_price * usd_price)
         user.toman_amount = 0
